@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   passwords:     'users/passwords',
   registrations: 'users/registrations'
 }
+
+  scope module: :users do
+    root 'home#top'
+  end
 end
