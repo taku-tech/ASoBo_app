@@ -14,10 +14,11 @@ Rails.application.routes.draw do
   scope module: :users do
     root 'home#top'
     get 'about' => 'home#about', as: :about
-    get 'level' => 'questions#level'
+    get 'level' => 'questions#level', as: :level
   end
 
   namespace :admins do
     root 'home#top'
+    get 'main' => 'home#main', as: :main
   end
 end
