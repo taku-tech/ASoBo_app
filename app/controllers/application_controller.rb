@@ -21,4 +21,6 @@ class ApplicationController < ActionController::Base
 			root_path
 		end
 	end
+
+	Refile.secret_key = '9965eb0ced03aae4584924c8af339f5521d5bd5a8e7e68f158b12b57ea6a0dc8f2cd99f49dd9f4140b4005b4345e57f1da38d037b9c045d40ef3b61179d8418b'
 end
