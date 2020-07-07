@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   scope module: :users do
     root 'home#top'
+    get 'about' => 'home#about', as: :about
   end
 end
