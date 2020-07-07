@@ -15,4 +15,8 @@ Rails.application.routes.draw do
     root 'home#top'
     get 'about' => 'home#about', as: :about
   end
+
+  namespace :admins do
+    root 'home#top'
+  end
 end
