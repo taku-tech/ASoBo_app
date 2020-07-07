@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-">
+			<nav>
+				<ul>
+					<% if user_signed_in? %>
+					<li><%= link_to 'マイページ', '#', class:"btn btn-info" %></li>
+					<li><%= link_to '問題へ', '#', class:"btn btn-info" %></li>
+					<li><%= link_to '単語学習', '#', class:"btn btn-info" %></li>
+					<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"btn btn-danger" %></li>
+					<% elsif admin_signed_in? %>
+					<li><%= link_to 'マイページ', '#', class:"btn btn-info" %></li>
+					<li><%= link_to '単語一覧', '#', class:"btn btn-info" %></li>
+					<li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-danger" %></li>
+					<% else %>
+					<li><%= link_to 'サイトについて', about_path, class:"btn btn-info" %></li>
+					<% end %>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
