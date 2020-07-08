@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   namespace :admins do
     root 'home#top'
     get 'main' => 'home#main', as: :main
+    resources :admins, only: [:show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :words, only: [:index, :new, :create, :edit, :update, :destroy]
   end
