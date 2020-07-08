@@ -3,8 +3,10 @@
 		<h2>単語登録</h2>
 		<%= form_with model: @word, url: admins_words_path, method: :post, local: true do |f| %>
 		<%= f.attachment_field :image %>
-		<p><%= f.label :word, "単語の入力" %></p>
+		<p><%= f.label :word, "英単語の入力" %></p>
 		<%= f.text_field :word %>
+		<p><%= f.label :word_jp, "日本語の入力" %></p>
+		<%= f.text_field :word_jp %>
 		<p>ジャンル選択</p>
 		<%= f.select :genre_id, @genres.map { |genre| [genre.name, genre.id] }, { include_blank: '選択してください'} %>
 		<%= f.submit "登録", class:"btn btn-outline-success" %>

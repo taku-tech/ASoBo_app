@@ -5,6 +5,8 @@
 		<%= f.attachment_field :image %>
 		<p><%= f.label :word, "単語の入力" %></p>
 		<%= f.text_field :word %>
+		<p><%= f.label :word_jp, "日本語の入力" %></p>
+		<%= f.text_field :word_jp %>
 		<p>ジャンル選択</p>
 		<%= f.select :genre_id, @genres.map { |genre| [genre.name, genre.id] }, { include_blank: '選択してください'} %>
 		<%= f.submit "更新", class:"btn btn-outline-success" %>

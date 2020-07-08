@@ -35,6 +35,6 @@ class Admins::WordsController < ApplicationController
 	private
 
 		def word_params
-			params.require(:word).permit(:word, :image)
+			params.require(:word).permit(:word, :word_jp,:image)
 		end
 end
