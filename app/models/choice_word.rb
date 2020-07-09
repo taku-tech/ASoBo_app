@@ -1,0 +1,2 @@
+class ChoiceWord < ApplicationRecord
+end
