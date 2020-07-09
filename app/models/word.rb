@@ -4,4 +4,5 @@ class Word < ApplicationRecord
 
 	belongs_to :admin
 	belongs_to :genre
+	has_many :choice_words
 end
