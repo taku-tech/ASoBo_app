@@ -6,7 +6,7 @@
 					<% if user_signed_in? %>
 					<li><%= link_to 'マイページ', user_path(current_user.id), class:"btn btn-info" %></li>
 					<li><%= link_to '問題へ', '#', class:"btn btn-info" %></li>
-					<li><%= link_to '単語学習', '#', class:"btn btn-info" %></li>
+					<li><%= link_to '単語学習', words_path, class:"btn btn-info" %></li>
 					<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"btn btn-danger" %></li>
 					<% elsif admin_signed_in? %>
 					<li><%= link_to 'マイページ', admins_admin_path(current_admin.id), class:"btn btn-info" %></li>

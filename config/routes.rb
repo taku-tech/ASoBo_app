@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get 'about' => 'home#about', as: :about
     get 'level' => 'questions#level', as: :level
     resources :users, only: [:show, :edit, :update]
+    resources :words, only: [:index]
   end
 
   namespace :admins do
