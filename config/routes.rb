@@ -24,6 +24,6 @@ Rails.application.routes.draw do
     get 'main' => 'home#main', as: :main
     resources :admins, only: [:show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :words, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :words, only: [:index, :new, :show, :create, :edit, :update, :destroy]
   end
 end

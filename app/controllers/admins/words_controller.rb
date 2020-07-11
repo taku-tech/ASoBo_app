@@ -11,6 +11,11 @@ class Admins::WordsController < ApplicationController
 		}
 	end
 
+	def show
+		@word = Word.find(params[:id])
+		@choice_words = @word.choice_words.all
+	end
+
 	def create
 		word = current_admin.words.new(word_params)
 		word.genre_id = params[:word][:genre_id]
