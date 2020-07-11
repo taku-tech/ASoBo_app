@@ -1,29 +1,31 @@
-<div class="row">
-	<div class="col-xs-5 col-xs-offset-2">
-		<h2>単語登録</h2>
-		<%= form_with model: @word, url: admins_word_path(@word.id), method: :patch, local: true do |f| %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-5 col-xs-offset-2">
+			<h2>単語登録</h2>
+			<%= form_with model: @word, url: admins_word_path(@word.id), method: :patch, local: true do |f| %>
 
-		<div class="form-group">
-			<%= f.attachment_field :image %>
+			<div class="form-group">
+				<%= f.attachment_field :image %>
+			</div>
+
+			<div class="form-group">
+				<p><%= f.label :word, "英単語の入力" %></p>
+				<%= f.text_field :word %>
+			</div>
+
+			<div class="form-group">
+				<p><%= f.label :word_jp, "日本語の入力" %></p>
+				<%= f.text_field :word_jp %>
+			</div>
+
+			<div class="form-group">
+				<p><%= f.label :genre_name, "ジャンル選択" %></p>
+				<%= f.select :genre_id, @genres.map { |genre| [genre.name, genre.id] }, { include_blank: '選択してください'} %>
+			</div>
+
+			<%= f.submit "更新", class:"btn btn-default" %>
+
+			<% end %>
 		</div>
-
-		<div class="form-group">
-			<p><%= f.label :word, "英単語の入力" %></p>
-			<%= f.text_field :word %>
-		</div>
-
-		<div class="form-group">
-			<p><%= f.label :word_jp, "日本語の入力" %></p>
-			<%= f.text_field :word_jp %>
-		</div>
-
-		<div class="form-group">
-			<p><%= f.label :genre_name, "ジャンル選択" %></p>
-			<%= f.select :genre_id, @genres.map { |genre| [genre.name, genre.id] }, { include_blank: '選択してください'} %>
-		</div>
-
-		<%= f.submit "更新", class:"btn btn-default" %>
-
-		<% end %>
 	</div>
 </div>
