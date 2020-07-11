@@ -6,6 +6,9 @@ class Admins::WordsController < ApplicationController
 	def new
 		@word = current_admin.words.new
 		@genres = current_admin.genres.where(is_valid: true)
+		3.times {
+			@word.choice_words.build
+		}
 	end
 
 	def create
@@ -35,6 +38,7 @@ class Admins::WordsController < ApplicationController
 	private
 
 		def word_params
-			params.require(:word).permit(:word, :word_jp,:image)
+			params.require(:word).permit(:text, :text_jp, :image,
+										 choice_words_attributes: [:text])
 		end
 end
