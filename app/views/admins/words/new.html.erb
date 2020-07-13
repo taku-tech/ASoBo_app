@@ -9,8 +9,8 @@
 			</div>
 
 			<div class="form-group">
-				<p><%= f.label :text, "英単語の入力" %></p>
-				<%= f.text_field :text %>
+				<p><%= f.label :text_en, "英単語の入力" %></p>
+				<%= f.text_field :text_en %>
 			</div>
 
 			<div class="form-group">
@@ -27,8 +27,8 @@
 			<% i = 1 %>
 			<%= f.fields_for :choice_words do |choice_fields| %>
 				<div class="form-group">
-					<%= choice_fields.label :text, "選択肢#{i}：" %>
-					<%= choice_fields.text_field :text %>
+					<%= choice_fields.label :text_en, "選択肢#{i}：" %>
+					<%= choice_fields.text_field :text_en %>
 					<% i = i + 1 %>
 				</div>
 			<% end %>
