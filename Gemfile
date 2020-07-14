@@ -75,3 +75,8 @@ gem 'jquery-rails'
 
 #環境変数に変換するgemの追加
 gem 'dotenv-rails'
+
+#mySQL
+group :production do
+  gem 'mysql2'
+end
