@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>マイページ</h2>
+			<table class="table table-bordered">
+				<tr>
+					<th>メールアドレス</th>
+					<td><%= @admin.email %></td>
+				</tr>
+			</table>
+			<div class="row">
+				<div class="col-xs-3">
+					<%= link_to '編集', edit_admins_admin_path(@admin.id), class:"btn btn-primary" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

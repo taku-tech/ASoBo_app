@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-5 col-xs-offset-2">
+			<h2>単語登録</h2>
+			<%= form_with model: @word, url: admins_word_path(@word.id), method: :patch, local: true do |f| %>
+
+			<div class="form-group">
+				<%= f.attachment_field :image %>
+			</div>
+
+			<div class="form-group">
+				<p><%= f.label :text_en, "英単語の入力" %></p>
+				<%= f.text_field :text_en %>
+			</div>
+
+			<div class="form-group">
+				<p><%= f.label :text_jp, "日本語の入力" %></p>
+				<%= f.text_field :text_jp %>
+			</div>
+
+			<div class="form-group">
+				<p><%= f.label :genre_name, "ジャンル選択" %></p>
+				<%= f.select :genre_id, @genres.map { |genre| [genre.name, genre.id] }, { include_blank: '選択してください'} %>
+			</div>
+
+			<p>※不正解となる単語を入力してください。</p>
+			<% i = 1 %>
+			<%= f.fields_for :choice_words do |choice_fields| %>
+				<div class="form-group">
+					<%= choice_fields.label :text_en, "選択肢#{i}：" %>
+					<%= choice_fields.text_field :text_en %>
+					<% i = i + 1 %>
+				</div>
+			<% end %>
+
+			<%= f.submit "更新", class:"btn btn-default" %>
+
+			<% end %>
+		</div>
+	</div>
+</div>
