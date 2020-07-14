@@ -26,10 +26,14 @@ class Admins::WordsController < ApplicationController
 	def edit
 		@word = Word.find(params[:id])
 		@genres = current_admin.genres.where(is_valid: true)
+		3.times {
+			@word.choice_words.build
+		}
 	end
 
 	def update
 		word = Word.find(params[:id])
+		word.genre_id = params[:word][:genre_id]
 		word.update(word_params)
 		redirect_to admins_words_path
 	end

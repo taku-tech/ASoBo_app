@@ -23,6 +23,16 @@
 				<%= f.select :genre_id, @genres.map { |genre| [genre.name, genre.id] }, { include_blank: '選択してください'} %>
 			</div>
 
+			<p>※不正解となる単語を入力してください。</p>
+			<% i = 1 %>
+			<%= f.fields_for :choice_words do |choice_fields| %>
+				<div class="form-group">
+					<%= choice_fields.label :text_en, "選択肢#{i}：" %>
+					<%= choice_fields.text_field :text_en %>
+					<% i = i + 1 %>
+				</div>
+			<% end %>
+
 			<%= f.submit "更新", class:"btn btn-default" %>
 
 			<% end %>
