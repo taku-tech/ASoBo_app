@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
     resources :favorites, only: [:index]
   end
+  get 'search' => 'search#search', as: :search
 
   namespace :admins do
     root 'home#top'

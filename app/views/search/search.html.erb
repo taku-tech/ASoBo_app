@@ -1,10 +1,10 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h2>単語一覧</h2>
+			<h2>'<%= @text %>'の検索結果</h2>
 			<%= link_to "お気に入り単語を見る", favorites_path %>
 
-			<%= render 'index', words: @words %>
+			<%= render 'users/words/index', words: @words %>
 
 		</div>
 	</div>
