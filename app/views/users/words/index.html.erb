@@ -2,12 +2,22 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<h2>単語一覧</h2>
+			<%= link_to "お気に入り単語を見る", favorites_path %>
 			<div class="words">
 				<% @words.each do |word| %>
 				<div class="word">
 					<div class="word__image">
 						<%= attachment_image_tag word, :image, format: 'jpeg', size: "100x100" %>
 					</div>
+					<% if word.favorite_by?(current_user) %>
+						<%= link_to word_favorites_path(word.id), method: :delete do %>
+						<i class="fas fa-star" aria-hidden="true" style="color: yellow;"></i>
+						<% end %>
+					<% else  %>
+						<%= link_to word_favorites_path(word.id), method: :post do %>
+						<i class="far fa-star" aria-hidden="true"></i>
+						<% end %>
+					<% end %>
 					<p><%= word.text_jp %></p>
 					<p><%= word.text_en %></p>
 				</div>
