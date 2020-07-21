@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_091903) do
+ActiveRecord::Schema.define(version: 2020_07_15_055439) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,38 +46,11 @@ ActiveRecord::Schema.define(version: 2020_07_20_091903) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "question_choices", force: :cascade do |t|
-    t.integer "question_id", null: false
-    t.string "choice", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string "content", null: false
-    t.string "image_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.integer "word_id", null: false
-  end
-
-  create_table "result_words", force: :cascade do |t|
-    t.integer "result_id", null: false
-    t.integer "word_id", null: false
-    t.string "image_id", null: false
-    t.string "answer_text", null: false
-    t.string "chose_choice", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "results", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.integer "score", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
-    t.integer "result_word_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,9 +59,9 @@ ActiveRecord::Schema.define(version: 2020_07_20_091903) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -98,10 +71,11 @@ ActiveRecord::Schema.define(version: 2020_07_20_091903) do
     t.integer "admin_id", null: false
     t.integer "genre_id", null: false
     t.string "text_en", null: false
+    t.string "text_jp", null: false
     t.string "image_id", null: false
+    t.boolean "is_valid", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "text_jp", null: false
   end
 
 end
