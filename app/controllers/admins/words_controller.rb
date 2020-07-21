@@ -44,7 +44,7 @@ class Admins::WordsController < ApplicationController
 	private
 
 		def word_params
-			params.require(:word).permit(:text_en, :text_jp, :image,
+			params.require(:word).permit(:text_en, :text_jp, :image_id, :is_valid
 										 choice_words_attributes: [:id, :text_en])
 		end
 end
