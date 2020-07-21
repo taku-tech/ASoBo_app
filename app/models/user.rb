@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :authentication_keys => [:name]
 
+  has_many :questions, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   # バリデーション
