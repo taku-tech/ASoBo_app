@@ -1,0 +1,2 @@
+class ResultWord < ApplicationRecord
+end
