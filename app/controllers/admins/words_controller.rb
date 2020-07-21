@@ -6,7 +6,7 @@ class Admins::WordsController < ApplicationController
 	def new
 		@word = current_admin.words.new
 		@genres = current_admin.genres.where(is_valid: true)
-		3.times {
+		4.times {
 			@word.choice_words.build
 		}
 	end
@@ -26,9 +26,6 @@ class Admins::WordsController < ApplicationController
 	def edit
 		@word = Word.find(params[:id])
 		@genres = current_admin.genres.where(is_valid: true)
-		3.times {
-			@word.choice_words.build
-		}
 	end
 
 	def update
@@ -48,6 +45,6 @@ class Admins::WordsController < ApplicationController
 
 		def word_params
 			params.require(:word).permit(:text_en, :text_jp, :image,
-										 choice_words_attributes: [:text_en])
+										 choice_words_attributes: [:id, :text_en])
 		end
 end
