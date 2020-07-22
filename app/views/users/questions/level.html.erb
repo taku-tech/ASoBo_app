@@ -9,10 +9,10 @@
 			<%= link_to 'かんたん', questions_path(level: :easy), method: :post, class:"btn btn-primary btn-block" %>
 		</div>
 		<div>
-			<%= link_to 'ふつう', questions_path(level: :normal), class:"btn btn-success btn-block" %>
+			<%= link_to 'ふつう', questions_path(level: :normal), method: :post, class:"btn btn-success btn-block" %>
 		</div>
 		<div>
-			<%= link_to 'むずかしい', questions_path(level: :hard), class:"btn btn-danger btn-block" %>
+			<%= link_to 'むずかしい', questions_path(level: :hard), method: :post, class:"btn btn-danger btn-block" %>
 		</div>
 	</div>
 </div>
