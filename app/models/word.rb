@@ -6,7 +6,7 @@ class Word < ApplicationRecord
 	belongs_to :genre
 	has_many :favorites, dependent: :destroy
 	has_many :questions, dependent: :destroy
-	has_many :result_word, , dependent: :destroy
+	has_many :result_words, dependent: :destroy
 	has_many :choice_words, dependent: :destroy
 	accepts_nested_attributes_for :choice_words
 

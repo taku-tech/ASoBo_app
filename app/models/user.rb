@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :authentication_keys => [:name]
 
   has_many :questions, dependent: :destroy
-  has_many :result, dependent: :destroy
+  has_many :results, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   # バリデーション
