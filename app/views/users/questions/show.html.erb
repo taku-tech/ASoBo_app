@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<%= form_with model: @result_word, url: next_path(@question.id), local: true do |f| %>
+					<%= attachment_image_tag @question_word, :image, format: 'jpeg', size: "100x100" %>
+					<%= @question_word.text_jp %>
+					<%= f.collection_radio_buttons :chose_text, @question_word.choice_words.all, :text_en, :text_en %>
+					<%= hidden_field_tag 'result[id]', @result.id %>
+				<%= f.submit "次へ", class:"btn btn-default" %>
+			<% end %>
+		</div>
+	</div>
+</div>
