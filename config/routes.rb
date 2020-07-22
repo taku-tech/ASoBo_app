@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :favorites, only: [:index]
+    resources :questions, only: [:show, :create]
+    post 'questions/:id' => 'questions#next', as: :next
   end
   get 'search' => 'search#search', as: :search
 
