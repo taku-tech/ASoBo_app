@@ -1,0 +1,11 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<% @result_words.each do |result_word| %>
+				<%= attachment_image_tag result_word.word, :image, format: 'jpeg', size: "100x100" %>
+				<%= result_word.word.text_en %>
+				<%= result_word.chose_text %>
+			<% end %>
+		</div>
+	</div>
+</div>
