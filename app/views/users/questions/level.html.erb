@@ -6,13 +6,13 @@
 <div class="row">
 	<div class="col-xs-2 col-xs-offset-5">
 		<div>
-			<%= link_to 'かんたん', '#', class:"btn btn-primary btn-block" %>
+			<%= link_to 'かんたん', questions_path(level: :easy), method: :post, class:"btn btn-primary btn-block" %>
 		</div>
 		<div>
-			<%= link_to 'ふつう', '#', class:"btn btn-success btn-block" %>
+			<%= link_to 'ふつう', questions_path(level: :normal), class:"btn btn-success btn-block" %>
 		</div>
 		<div>
-			<%= link_to 'むずかしい', '#', class:"btn btn-danger btn-block" %>
+			<%= link_to 'むずかしい', questions_path(level: :hard), class:"btn btn-danger btn-block" %>
 		</div>
 	</div>
 </div>
