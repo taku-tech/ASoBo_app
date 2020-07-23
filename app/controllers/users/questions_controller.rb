@@ -6,6 +6,7 @@ class Users::QuestionsController < ApplicationController
 	def show
 		@question = current_user.questions.find(params[:id])
 		@question_word = Word.find(@question.word_id)
+		@choices = @question_word.choice_words.all.shuffle
 		@result = current_user.results.create
 		@result_word = ResultWord.new
 	end
@@ -25,6 +26,7 @@ class Users::QuestionsController < ApplicationController
 			redirect_to result_path(params[:result][:id].to_i)
 		else
 			@question_word = Word.find(@question.word_id)
+			@choices = @question_word.choice_words.all.shuffle
 			@result_word = ResultWord.new
 			render :show
 		end

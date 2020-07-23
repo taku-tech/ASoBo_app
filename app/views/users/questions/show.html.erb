@@ -10,7 +10,7 @@
 						<p><%= @question_word.text_jp %></p>
 					</div>
 					<div class="question__choices">
-						<%= f.collection_radio_buttons :chose_text, @question_word.choice_words.all, :text_en, :text_en %>
+						<%= f.collection_radio_buttons :chose_text, @choices, :text_en, :text_en %>
 					</div>
 				</div>
 					<%= hidden_field_tag 'result[id]', @result.id %>
