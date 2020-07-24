@@ -1,4 +1,5 @@
 class Users::QuestionsController < ApplicationController
+	before_action :authenticate_user!
 
 	def level
 	end

@@ -1,4 +1,6 @@
 class Users::ResultsController < ApplicationController
+	before_action :authenticate_user!
+
 	def index
 		@results = current_user.results.all.order(id: "DESC")
 	end
