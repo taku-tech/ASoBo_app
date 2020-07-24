@@ -11,7 +11,8 @@
 						<th>単語</th>
 						<th>日本語訳</th>
 						<th>ジャンル</th>
-						<th colspan="2"></th>
+						<th>ステータス</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -21,8 +22,14 @@
 						<td><%= link_to word.text_en, admins_word_path(word.id) %></td>
 						<td><%= word.text_jp %></td>
 						<td><%= word.genre.name %></td>
+						<td>
+							<% if word.is_valid == true %>
+							有効
+							<% else %>
+							無効
+							<% end %>
+						</td>
 						<td><%= link_to '編集', edit_admins_word_path(word.id), class:"btn btn-success" %></td>
-						<td><%= link_to '削除', admins_word_path(word.id), method: :delete, class:"btn btn-danger" %></td>
 					</tr>
 					<% end %>
 				</tbody>

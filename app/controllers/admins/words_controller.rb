@@ -35,12 +35,6 @@ class Admins::WordsController < ApplicationController
 		redirect_to admins_words_path
 	end
 
-	def destroy
-		word = Word.find(params[:id])
-		word.destroy
-		redirect_to admins_words_path
-	end
-
 	private
 
 		def word_params
