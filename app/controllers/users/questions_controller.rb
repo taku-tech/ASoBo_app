@@ -23,6 +23,7 @@ class Users::QuestionsController < ApplicationController
 		result_word.save
 		@question = current_user.questions.find_by(is_done: false)
 		if @question.nil?
+			current_user.questions.destroy_all
 			redirect_to result_path(params[:result][:id].to_i)
 		else
 			@question_word = Word.find(@question.word_id)
