@@ -11,7 +11,9 @@
 
   <body>
     <!-- ヘッダー -->
+    <% unless controller.controller_name == 'questions' && controller.action_name == 'show' || controller.controller_name == 'questions' && controller.action_name == 'next' %>
     <%= render 'partial/header' %>
+    <% end %>
     <!-- deviseのフラッシュメッセージ追加 -->
     <% if flash[:notice] %>
       <div class="alert alert-info">
