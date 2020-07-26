@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   # バリデーション
-  validates :email, uniqueness: true
   validates :name, presence: true, uniqueness: true, length: {maximum: 50}
 
   #登録時にメールアドレスを不要とする
