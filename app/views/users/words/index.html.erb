@@ -1,12 +1,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h2>単語一覧</h2>
+			<h2 class="title">単語一覧</h2>
 			<%= render 'search/search' %>
 
-			<%= link_to "お気に入り単語を見る", favorites_path %>
+			<%= link_to "お気に入り単語を見る", favorites_path, class:"btn btn-warning" %>
 
-			<%= render 'index', words: @words %>
+			<div class="word-index-wrapper">
+				<%= render 'index', words: @words %>
+			</div>
 
 		</div>
 	</div>

@@ -1,6 +1,6 @@
 <% if word.favorite_by?(current_user) %>
 	<%= link_to word_favorites_path(word.id), method: :delete, remote: true do %>
-	<i class="fas fa-star" aria-hidden="true" style="color: yellow;" ></i>
+	<i class="fas fa-star" aria-hidden="true" style="color: #000066;" ></i>
 	<% end %>
 <% else  %>
 	<%= link_to word_favorites_path(word.id), method: :post, remote: true do %>
