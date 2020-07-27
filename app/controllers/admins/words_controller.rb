@@ -1,4 +1,6 @@
 class Admins::WordsController < ApplicationController
+	before_action :authenticate_admin!
+
 	def index
 		@words = current_admin.words.all
 	end
