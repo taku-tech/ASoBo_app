@@ -1,18 +1,15 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h2>単語一覧</h2>
-			<div class="words">
-				<% @words.each do |word| %>
-				<div class="word">
-					<div class="word__image">
-						<%= attachment_image_tag word, :image, format: 'jpeg', size: "100x100" %>
-					</div>
-					<p><%= word.text_jp %></p>
-					<p><%= word.text_en %></p>
-				</div>
-				<% end %>
+			<h2 class="title">単語一覧</h2>
+			<%= render 'search/search' %>
+
+			<%= link_to "お気に入り単語を見る", favorites_path, class:"btn btn-warning" %>
+
+			<div class="word-index-wrapper">
+				<%= render 'index', words: @words %>
 			</div>
+
 		</div>
 	</div>
 </div>

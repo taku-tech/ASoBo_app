@@ -2,9 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.main {
-	background-image: url('bock-image-photo_ac.jpg');
+.bg {
+	background-image: url('bg-m.jpg');
 	background-size: cover;
 	width: 100%;
-	height: 86vh;
+	height: 87vh;
+}
+
+.top-wrapper {
+	padding-top: 150px;
 }

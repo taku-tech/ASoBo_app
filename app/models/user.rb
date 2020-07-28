@@ -4,8 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :authentication_keys => [:name]
 
+  has_many :questions, dependent: :destroy
+  has_many :results, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
   # バリデーション
-  validates :email, uniqueness: true
   validates :name, presence: true, uniqueness: true, length: {maximum: 50}
 
   #登録時にメールアドレスを不要とする

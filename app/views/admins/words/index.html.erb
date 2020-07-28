@@ -4,25 +4,32 @@
 			<h2>単語一覧</h2>
 			<%= link_to '単語新規登録', new_admins_word_path, class:"btn btn-primary" %>
 			<%= link_to 'ジャンル一覧 / 登録', admins_genres_path, class:"btn btn-warning" %>
-			<table class="table">
+			<table class="table admins-words__table">
 				<thead>
-					<tr>
+					<tr class="admins-words__table-head">
 						<th>画像</th>
 						<th>単語</th>
 						<th>日本語訳</th>
 						<th>ジャンル</th>
-						<th colspan="2"></th>
+						<th>ステータス</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<% @words.each do |word| %>
 					<tr>
-						<td><%= attachment_image_tag word, :image, format: 'jpeg', size: "30x30" %></td>
+						<td><%= attachment_image_tag word, :image, format: 'jpeg', size: "40x30" %></td>
 						<td><%= link_to word.text_en, admins_word_path(word.id) %></td>
 						<td><%= word.text_jp %></td>
 						<td><%= word.genre.name %></td>
+						<td>
+							<% if word.is_valid == true %>
+							有効
+							<% else %>
+							無効
+							<% end %>
+						</td>
 						<td><%= link_to '編集', edit_admins_word_path(word.id), class:"btn btn-success" %></td>
-						<td><%= link_to '削除', admins_word_path(word.id), method: :delete, class:"btn btn-danger" %></td>
 					</tr>
 					<% end %>
 				</tbody>

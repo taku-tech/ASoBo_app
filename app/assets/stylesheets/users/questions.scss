@@ -1,3 +1,34 @@
 // Place all the styles related to the users::questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.question {
+	padding-top: 100px;
+	padding-bottom: 20px;
+	text-align: center;
+	&__image {
+
+	}
+	&__text {
+
+	}
+	&__choices > input {
+		margin-left: 10px;
+	}
+}
+
+.question--level-wrapper {
+	padding-top: 50px;
+}
+
+.levels {
+	padding-top: 50px;
+}
+
+.level {
+	padding-bottom: 10px;
+}
+
+.btn-question {
+	text-align: right;
+}

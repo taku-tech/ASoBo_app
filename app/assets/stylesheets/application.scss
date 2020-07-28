@@ -13,10 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+.title {
+	padding: 30px 0;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 @import "header";
+
+// userのscss
 @import "users/home";
 @import "users/registrations";
 @import "users/words";
+@import "users/questions";
+
+// adminのscss
+@import "admins/words"
+

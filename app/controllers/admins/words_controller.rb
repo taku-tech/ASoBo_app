@@ -1,4 +1,6 @@
 class Admins::WordsController < ApplicationController
+	before_action :authenticate_admin!
+
 	def index
 		@words = current_admin.words.all
 	end
@@ -6,7 +8,7 @@ class Admins::WordsController < ApplicationController
 	def new
 		@word = current_admin.words.new
 		@genres = current_admin.genres.where(is_valid: true)
-		3.times {
+		4.times {
 			@word.choice_words.build
 		}
 	end
@@ -26,9 +28,6 @@ class Admins::WordsController < ApplicationController
 	def edit
 		@word = Word.find(params[:id])
 		@genres = current_admin.genres.where(is_valid: true)
-		3.times {
-			@word.choice_words.build
-		}
 	end
 
 	def update
@@ -38,16 +37,10 @@ class Admins::WordsController < ApplicationController
 		redirect_to admins_words_path
 	end
 
-	def destroy
-		word = Word.find(params[:id])
-		word.destroy
-		redirect_to admins_words_path
-	end
-
 	private
 
 		def word_params
-			params.require(:word).permit(:text_en, :text_jp, :image,
-										 choice_words_attributes: [:text_en])
+			params.require(:word).permit(:text_en, :text_jp, :image, :is_valid,
+										 choice_words_attributes: [:id, :text_en])
 		end
 end
