@@ -4,14 +4,16 @@
     <title>ASoBoApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/8dd1501b5e.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <!-- ヘッダー -->
+    <% unless controller.controller_name == 'questions' && controller.action_name == 'show' || controller.controller_name == 'questions' && controller.action_name == 'next' %>
     <%= render 'partial/header' %>
+    <% end %>
     <!-- deviseのフラッシュメッセージ追加 -->
     <% if flash[:notice] %>
       <div class="alert alert-info">
