@@ -37,8 +37,8 @@ class Users::QuestionsController < ApplicationController
 	def create
 		question_count_per_level = {
 			easy: 2,
-			normal: 3,
-			hard: 4
+			normal: 5,
+			hard: 8
 		}
 		params[:level]
 		@words = Word.all.shuffle.take(question_count_per_level[params[:level].to_sym])
