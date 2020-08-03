@@ -1,7 +1,7 @@
 class Users::WordsController < ApplicationController
-	before_action :authenticate_user!
+  before_action :authenticate_user!
 
-	def index
-		@words = Word.all
-	end
+  def index
+    @words = Word.all
+  end
 end
