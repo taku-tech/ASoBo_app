@@ -30,12 +30,15 @@
         <%= f.label :is_valid, "無効" %>
       </div>
 
-      <p>※不正解となる単語を入力してください。</p>
+      <p>
+        問題で出題する単語の選択肢を入力してください。</br>
+        <注>正解となる単語も、もう一度入力してください。
+      </p>
       <% i = 1 %>
-      <%= f.fields_for :choice_words do |choice_fields| %>
+      <%= f.fields_for :choice_words do |choice_word_field| %>
         <div class="form-group">
-          <%= choice_fields.label :text_en, "選択肢#{i}：" %>
-          <%= choice_fields.text_field :text_en %>
+          <%= choice_word_field.label :text_en, "選択肢#{i}：" %>
+          <%= choice_word_field.text_field :text_en %>
           <% i = i + 1 %>
         </div>
       <% end %>

@@ -15,7 +15,7 @@ class Admins::WordsController < ApplicationController
 
   def show
     @word = Word.find(params[:id])
-    @choice_words = @word.choice_words.all
+    @choices = @word.choice_words.all
   end
 
   def create

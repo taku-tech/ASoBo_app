@@ -10,7 +10,7 @@
 
       <div class="form-group">
         <p><%= f.label :text_en, "英単語の入力" %></p>
-        <%= f.text_field :text_en, id:"input" %>
+        <%= f.text_field :text_en %>
       </div>
 
       <div class="form-group">
@@ -23,41 +23,23 @@
         <%= f.select :genre_id, @genres.map { |genre| [genre.name, genre.id] }, { include_blank: '選択してください'} %>
       </div>
 
-      <div>Input: <span id="output"></span></div>
-
-      <p>※不正解となる単語を入力してください。</p>
+      <p>
+        問題で出題する単語の選択肢を入力してください。</br>
+        <注>正解となる単語も、もう一度入力してください。
+      </p>
       <% i = 1 %>
-      <%= f.fields_for :choice_words do |choice_fields| %>
-        <% if i == 1 %>
+      <%= f.fields_for :choice_words do |choice_word_field| %>
         <div class="form-group">
-          <%= choice_fields.label :text_en, "選択肢#{i}：" %>
-          <%= choice_fields.text_field :text_en, id: "output" %>
+          <%= choice_word_field.label :text_en, "選択肢#{i}：" %>
+          <%= choice_word_field.text_field :text_en %>
           <% i = i + 1 %>
         </div>
-        <% else %>
-        <div class="form-group">
-          <%= choice_fields.label :text_en, "選択肢#{i}：" %>
-        <%= choice_fields.text_field :text_en %>
-          <% i = i + 1 %>
-        </div>
-        <% end %>
       <% end %>
 
       <%= f.submit "登録", class:"btn btn-default" %>
 
       <% end %>
     </div>
-
-      <script>
-        $(function() {
-          var $input = $('#input');
-          var $output = $('#output');
-          $input.on('input', function(event) {
-            var value = $input.val();
-            $output.text(value);
-          });
-        });
-      </script>
 
   </div>
 </div>

@@ -7,11 +7,13 @@
       </div>
       <p>英単語</p>
       <p><%= @word.text_en %></p>
+
       <p>日本語</p>
       <p><%= @word.text_jp %></p>
+
       <p>選択肢</p>
-      <% @choice_words.each do |choice_word| %>
-      <p><%= choice_word.text_en %></p>
+      <% @choices.each do |choice| %>
+        <p><%= choice.text_en %></p>
       <% end %>
     </div>
   </div>
