@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_125534) do
+ActiveRecord::Schema.define(version: 2020_08_05_072822) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,11 +24,12 @@ ActiveRecord::Schema.define(version: 2020_07_21_125534) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "choice_words", force: :cascade do |t|
-    t.integer "word_id", null: false
-    t.string "text_en", null: false
+  create_table "choices", force: :cascade do |t|
+    t.integer "word_id"
+    t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["word_id"], name: "index_choices_on_word_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -36,37 +37,44 @@ ActiveRecord::Schema.define(version: 2020_07_21_125534) do
     t.integer "word_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["word_id"], name: "index_favorites_on_word_id"
   end
 
   create_table "genres", force: :cascade do |t|
-    t.integer "admin_id", null: false
     t.string "name", null: false
     t.boolean "is_valid", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_genres_on_name"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer "word_id", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
+    t.integer "word_id"
+    t.boolean "is_done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_done", default: false, null: false
+    t.index ["user_id"], name: "index_questions_on_user_id"
+    t.index ["word_id"], name: "index_questions_on_word_id"
   end
 
-  create_table "result_words", force: :cascade do |t|
-    t.integer "result_id", null: false
-    t.integer "word_id", null: false
-    t.string "chose_text", null: false
+  create_table "result_details", force: :cascade do |t|
+    t.integer "word_id"
+    t.integer "result_id"
+    t.string "selected_choice", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["result_id"], name: "index_result_details_on_result_id"
+    t.index ["word_id"], name: "index_result_details_on_word_id"
   end
 
   create_table "results", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_results_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,14 +92,16 @@ ActiveRecord::Schema.define(version: 2020_07_21_125534) do
   end
 
   create_table "words", force: :cascade do |t|
-    t.integer "admin_id", null: false
-    t.integer "genre_id", null: false
-    t.string "text_en", null: false
-    t.string "text_jp", null: false
+    t.integer "genre_id"
+    t.string "english", null: false
+    t.string "japanese", null: false
     t.string "image_id", null: false
     t.boolean "is_valid", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["english"], name: "index_words_on_english"
+    t.index ["genre_id"], name: "index_words_on_genre_id"
+    t.index ["japanese"], name: "index_words_on_japanese"
   end
 
 end

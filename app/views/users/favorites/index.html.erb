@@ -1,28 +1,28 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<h2>お気に入り単語一覧</h2>
-			<%= link_to "単語一覧に戻る", words_path %>
-			<div class="words">
-				<% @favorites.each do |favorite| %>
-				<div class="word">
-					<div class="word__image">
-						<%= attachment_image_tag favorite.word, :image, format: 'jpeg', size: "100x100" %>
-					</div>
-					<%# if favorite.word.favorite_by?(current_user) %>
-						<%#= link_to word_favorites_path(favorite.word.id), method: :delete do %>
-						<!-- <i class="fas fa-star" aria-hidden="true" style="color: yellow;"></i> -->
-						<%# end %>
-					<%# else  %>
-						<%#= link_to word_favorites_path(favorite.word.id), method: :post do %>
-						<!-- <i class="far fa-star" aria-hidden="true"></i> -->
-						<%# end %>
-					<%# end %>
-					<p><%= favorite.word.text_jp %></p>
-					<p><%= favorite.word.text_en %></p>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>お気に入り単語一覧</h2>
+      <div class="words">
+        <% @favorites.each do |favorite| %>
+        <div class="word">
+          <div class="word__image">
+            <%= attachment_image_tag favorite.word, :image, format: 'jpeg', size: "100x100" %>
+          </div>
+          <%# if favorite.word.favorite_by?(current_user) %>
+            <%#= link_to word_favorites_path(favorite.word.id), method: :delete do %>
+            <!-- <i class="fas fa-star" aria-hidden="true" style="color: yellow;"></i> -->
+            <%# end %>
+          <%# else  %>
+            <%#= link_to word_favorites_path(favorite.word.id), method: :post do %>
+            <!-- <i class="far fa-star" aria-hidden="true"></i> -->
+            <%# end %>
+          <%# end %>
+          <p><%= favorite.word.japanese %></p>
+          <p><%= favorite.word.english %></p>
+        </div>
+        <% end %>
+      </div>
+      <%= link_to "単語一覧に戻る", words_path, class:"btn btn-default" %>
+    </div>
+  </div>
 </div>

@@ -1,16 +1,16 @@
 <div class="words">
-	<% words.each do |word| %>
-	<div class="word">
-		<div class="word__image">
-			<%= attachment_image_tag word, :image, format: 'jpeg', size: "100x100" %>
-		</div>
-		<% if controller.controller_name == "words" || controller.controller_name == "search" %>
-			<div id="favorites_buttons_<%= word.id %>">
-				<%= render 'users/favorites/favorite', word: word %>
-			</div>
-		<% end %>
-		<p><%= word.text_jp %></p>
-		<p><%= word.text_en %></p>
-	</div>
-	<% end %>
+  <% words.each do |word| %>
+  <div class="word">
+    <div class="word__image">
+      <%= attachment_image_tag word, :image, format: 'jpeg', size: "100x100" %>
+    </div>
+    <% if controller.controller_name == "words" || controller.controller_name == "search" %>
+      <div id="favorites_buttons_<%= word.id %>">
+        <%= render 'users/favorites/favorite', word: word %>
+      </div>
+    <% end %>
+    <p><%= word.japanese %></p>
+    <p><%= word.english %></p>
+  </div>
+  <% end %>
 </div>

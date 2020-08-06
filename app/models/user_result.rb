@@ -1,2 +1,0 @@
-class UserResult < ApplicationRecord
-end
