@@ -7,16 +7,16 @@ class Users::QuestionsController < ApplicationController
   def show
     @question = current_user.questions.find(params[:id])
     @question_word = Word.find(@question.word_id)
-    @choices = @question_word.choice_words.all.shuffle
+    @choices = @question_word.choices.all.shuffle
     @result = current_user.results.create
-    @result_word = ResultWord.new
+    @result_word = ResultDetail.new
   end
 
   def next
     question = current_user.questions.find(params[:id])
     question_word = Word.find(question.word_id)
     @result = Result.find(params[:result][:id].to_i)
-    result_word = @result.result_words.new(result_word_params)
+    result_word = @result.result_details.new(result_detail_params)
     result_word.word_id = question_word.id
     result_word.result_id = @result.id
     question.is_done = true
@@ -28,8 +28,8 @@ class Users::QuestionsController < ApplicationController
       redirect_to result_path(params[:result][:id].to_i)
     else
       @question_word = Word.find(@question.word_id)
-      @choices = @question_word.choice_words.all.shuffle
-      @result_word = ResultWord.new
+      @choices = @question_word.choices.all.shuffle
+      @result_word = ResultDetail.new
       render :show
     end
   end
@@ -51,8 +51,8 @@ class Users::QuestionsController < ApplicationController
   end
 
   private
-    def result_word_params
-      params.require(:result_word).permit(:chose_text)
+    def result_detail_params
+      params.require(:result_detail).permit(:selected_choice)
     end
 
     def question_params

@@ -7,12 +7,12 @@ class Users::ResultsController < ApplicationController
 
   def show
     result = current_user.results.find(params[:id])
-    @result_words = result.result_words.all
+    @result_details = result.result_details.all
     @correct_answers_cnt = 0
     @questions_cnt = 0
-    @result_words.each do |result_word|
+    @result_details.each do |result_detail|
       @questions_cnt = @questions_cnt + 1
-      if result_word.word.text_en == result_word.chose_text
+      if result_detail.word.english == result_detail.selected_choice
         @correct_answers_cnt = @correct_answers_cnt + 1
       end
     end

@@ -6,14 +6,14 @@
         <%= attachment_image_tag @word, :image, format: 'jpeg', size: "100x100" %>
       </div>
       <p>英単語</p>
-      <p><%= @word.text_en %></p>
+      <p><%= @word.english %></p>
 
       <p>日本語</p>
-      <p><%= @word.text_jp %></p>
+      <p><%= @word.japanese %></p>
 
       <p>選択肢</p>
       <% @choices.each do |choice| %>
-        <p><%= choice.text_en %></p>
+        <p><%= choice.content %></p>
       <% end %>
     </div>
   </div>

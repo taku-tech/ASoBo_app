@@ -16,9 +16,9 @@
             <td>
               <% score = 0 %>
               <% question_cnt = 0 %>
-              <% result.result_words.each do |result_word| %>
+              <% result.result_details.each do |result_detail| %>
               <% question_cnt = question_cnt + 1 %>
-              <% if result_word.word.text_en == result_word.chose_text %>
+              <% if result_detail.word.english == result_detail.selected_choice %>
               <% score = score + 1 %>
               <% end %>
               <% end %>

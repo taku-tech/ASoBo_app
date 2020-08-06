@@ -7,10 +7,10 @@
             <%= attachment_image_tag @question_word, :image, format: 'jpeg', size: "100x100" %>
           </div>
           <div class="question__text">
-            <p><%= @question_word.text_jp %></p>
+            <p><%= @question_word.japanese %></p>
           </div>
           <div class="question__choices">
-            <%= f.collection_radio_buttons :chose_text, @choices, :text_en, :text_en %>
+            <%= f.collection_radio_buttons :selected_choice, @choices, :content, :content %>
           </div>
         </div>
           <%= hidden_field_tag 'result[id]', @result.id %>

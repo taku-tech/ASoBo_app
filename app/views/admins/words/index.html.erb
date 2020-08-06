@@ -19,8 +19,8 @@
           <% @words.each do |word| %>
           <tr>
             <td><%= attachment_image_tag word, :image, format: 'jpeg', size: "40x30" %></td>
-            <td><%= link_to word.text_en, admins_word_path(word.id) %></td>
-            <td><%= word.text_jp %></td>
+            <td><%= link_to word.english, admins_word_path(word.id) %></td>
+            <td><%= word.japanese %></td>
             <td><%= word.genre.name %></td>
             <td>
               <% if word.is_valid == true %>

@@ -3,11 +3,9 @@
     <div class="col-xs-12">
       <h2>'<%= @text %>'の検索結果</h2>
       <%= render 'search/search' %>
-
-      <%= link_to "お気に入り単語を見る", favorites_path %>
-
+      <%= link_to "お気に入り単語を見る", favorites_path, class:"btn btn-warning" %>
       <%= render 'users/words/index', words: @words %>
-
+      <%= link_to "単語一覧に戻る", words_path, class:"btn btn-default" %>
     </div>
   </div>
 </div>

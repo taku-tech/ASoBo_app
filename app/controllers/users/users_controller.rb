@@ -2,17 +2,14 @@ class Users::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = User.find(current_user.id)
   end
 
   def edit
-    @user = User.find(current_user.id)
   end
 
   def update
-    user = User.find(current_user.id)
-    user.update(user_params)
-    redirect_to user_path(user.id)
+    current_user.update(user_params)
+    redirect_to user_path(current_user)
   end
 
   private

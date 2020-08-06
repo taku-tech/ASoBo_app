@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-xs-12">
       <h2>お気に入り単語一覧</h2>
-      <%= link_to "単語一覧に戻る", words_path %>
       <div class="words">
         <% @favorites.each do |favorite| %>
         <div class="word">
@@ -18,11 +17,12 @@
             <!-- <i class="far fa-star" aria-hidden="true"></i> -->
             <%# end %>
           <%# end %>
-          <p><%= favorite.word.text_jp %></p>
-          <p><%= favorite.word.text_en %></p>
+          <p><%= favorite.word.japanese %></p>
+          <p><%= favorite.word.english %></p>
         </div>
         <% end %>
       </div>
+      <%= link_to "単語一覧に戻る", words_path, class:"btn btn-default" %>
     </div>
   </div>
 </div>
