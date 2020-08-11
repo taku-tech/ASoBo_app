@@ -39,9 +39,10 @@ class Users::QuestionsController < ApplicationController
       easy: 5,
       normal: 10,
       hard: 15
-    }
+    } # 難易度ごとに問題の表示数を指定
     params[:level]
-    @words = Word.all.shuffle.take(question_count_per_level[params[:level].to_sym])
+    @words = Word.all.shuffle.take(question_count_per_level[params[:level].to_sym]) # ランダムで単語をピックアップ
+    # 問題を作成
     @words.each do |word|
       question = current_user.questions.new
       question.word_id = word.id
