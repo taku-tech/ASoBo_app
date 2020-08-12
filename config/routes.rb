@@ -24,11 +24,12 @@ Rails.application.routes.draw do
     post 'questions/:id' => 'questions#next', as: :next
     resources :results, only: [:index, :show]
   end
+
   get 'search' => 'search#search', as: :search
 
   namespace :admins do
     resources :admins, only: [:show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :words, only: [:index, :new, :show, :create, :edit, :update, :destroy]
+    resources :words, only: [:index, :new, :show, :create, :edit, :update]
   end
 end

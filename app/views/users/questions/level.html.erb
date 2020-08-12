@@ -1,24 +1,24 @@
 <div class="container">
-	<div class="question--level-wrapper">
-		<div class="row">
-			<div class="col-xs-6 col-xs-offset-3">
-				<h1>問題の選択</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2 col-xs-offset-5">
-				<div class="levels">
-					<div class="level">
-						<%= link_to 'かんたん', questions_path(level: :easy), method: :post, class:"btn btn-primary btn-block" %>
-					</div>
-					<div class="level">
-						<%= link_to 'ふつう', questions_path(level: :normal), method: :post, class:"btn btn-success btn-block" %>
-					</div>
-					<div class="level">
-						<%= link_to 'むずかしい', questions_path(level: :hard), method: :post, class:"btn btn-danger btn-block" %>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="question--level-wrapper">
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h1>問題の選択</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-5">
+        <div class="levels">
+          <div class="level">
+            <%= link_to 'かんたん', questions_path(level: :easy), method: :post, class:"btn btn-primary btn-block" %>
+          </div>
+          <div class="level">
+            <%= link_to 'ふつう', questions_path(level: :normal), method: :post, class:"btn btn-success btn-block" %>
+          </div>
+          <div class="level">
+            <%= link_to 'むずかしい', questions_path(level: :hard), method: :post, class:"btn btn-danger btn-block" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

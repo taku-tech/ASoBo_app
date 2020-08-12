@@ -2,10 +2,10 @@ class CreateGenres < ActiveRecord::Migration[5.2]
   def change
     create_table :genres do |t|
 
-      t.integer :admin_id, null: false
       t.string :name, null: false
       t.boolean :is_valid, null: false, default: true
       t.timestamps
     end
+    add_index :genres, :name
   end
 end

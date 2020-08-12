@@ -1,29 +1,29 @@
 <header id="header" class="header">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-">
-				<nav class="navbar">
-					<ul class="nav__lists">
-						<li class="nav__list logo">
-							<%= link_to root_path do %>
-								<%= image_tag('logo.jpg') %>
-							<% end %>
-						</li>
-						<% if user_signed_in? %>
-						<li class="nav__list"><%= link_to 'マイページ', user_path(current_user.id), class:"btn btn-info" %></li>
-						<li class="nav__list"><%= link_to '問題へ', level_path, class:"btn btn-info" %></li>
-						<li class="nav__list"><%= link_to '単語学習', words_path, class:"btn btn-info" %></li>
-						<li class="nav__list"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"btn btn-danger" %></li>
-						<% elsif admin_signed_in? %>
-						<li class="nav__list"><%= link_to 'マイページ', admins_admin_path(current_admin.id), class:"btn btn-info" %></li>
-						<li class="nav__list"><%= link_to '単語一覧', admins_words_path, class:"btn btn-info" %></li>
-						<li class="nav__list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-danger" %></li>
-						<% else %>
-						<li class="nav__list"><%= link_to 'サイトについて', about_path, class:"btn btn-info" %></li>
-						<% end %>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-">
+        <nav class="navbar">
+          <ul class="nav__lists">
+            <li class="nav__list logo">
+              <%= link_to root_path do %>
+                <%= image_tag('logo.jpg') %>
+              <% end %>
+            </li>
+            <% if user_signed_in? %>
+            <li class="nav__list"><%= link_to 'マイページ', user_path(current_user.id), class:"btn btn-info" %></li>
+            <li class="nav__list"><%= link_to '問題へ', level_path, class:"btn btn-info" %></li>
+            <li class="nav__list"><%= link_to '単語学習', words_path, class:"btn btn-info" %></li>
+            <li class="nav__list"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"btn btn-danger" %></li>
+            <% elsif admin_signed_in? %>
+            <li class="nav__list"><%= link_to 'マイページ', admins_admin_path(current_admin.id), class:"btn btn-info" %></li>
+            <li class="nav__list"><%= link_to '単語一覧', admins_words_path, class:"btn btn-info" %></li>
+            <li class="nav__list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-danger" %></li>
+            <% else %>
+            <li class="nav__list"><%= link_to 'サイトについて', about_path, class:"btn btn-info" %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
 </header><!-- /header -->

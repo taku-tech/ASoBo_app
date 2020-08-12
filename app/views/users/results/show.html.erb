@@ -1,42 +1,42 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<h2>成績表</h2>
-			<h4>合計点数：<%= "#{@questions_cnt}問中#{@correct_answers_cnt}点" %></h4>
-			<table class="table table-bordered result-detail__table">
-				<thead>
-					<tr class="result-detail__table-head">
-						<th>問題</th>
-						<th>答え</th>
-						<th>選んだ単語</th>
-						<th>結果</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @result_words.each do |result_word| %>
-					<tr>
-						<td>
-							<%= attachment_image_tag result_word.word, :image, format: 'jpeg', size: "40x40" %>
-							<p><%= result_word.word.text_jp %></p>
-						</td>
-						<td><%= result_word.word.text_en %></td>
-						<td><%= result_word.chose_text %></td>
-						<td>
-							<% if result_word.word.text_en == result_word.chose_text %>
-							<i class="far fa-circle" style="color:red;font-size:20px;"></i>
-							<% else %>
-							<i class="fas fa-times" style="color:red;font-size:20px;"></i>
-							<% end %>
-						</td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-4">
-			<%= link_to '成績表一覧', results_path, class:"btn btn-primary" %>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <h2>成績表</h2>
+      <h4>合計点数：<%= "#{@questions_cnt}問中#{@correct_answers_cnt}点" %></h4>
+      <table class="table table-bordered result-detail__table">
+        <thead>
+          <tr class="result-detail__table-head">
+            <th>問題</th>
+            <th>答え</th>
+            <th>選んだ単語</th>
+            <th>結果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @result_details.each do |result_detail| %>
+          <tr>
+            <td>
+              <%= attachment_image_tag result_detail.word, :image, format: 'jpeg', size: "40x40" %>
+              <p><%= result_detail.word.japanese %></p>
+            </td>
+            <td><%= result_detail.word.english %></td>
+            <td><%= result_detail.selected_choice %></td>
+            <td>
+              <% if result_detail.word.english == result_detail.selected_choice %>
+              <i class="far fa-circle" style="color:red;font-size:20px;"></i>
+              <% else %>
+              <i class="fas fa-times" style="color:red;font-size:20px;"></i>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= link_to '成績表一覧', results_path, class:"btn btn-primary" %>
+    </div>
+  </div>
 </div>

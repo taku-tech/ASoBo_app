@@ -1,22 +1,19 @@
 class Users::UsersController < ApplicationController
-	before_action :authenticate_user!
+  before_action :authenticate_user!
 
-	def show
-		@user = User.find(current_user.id)
-	end
+  def show
+  end
 
-	def edit
-		@user = User.find(current_user.id)
-	end
+  def edit
+  end
 
-	def update
-		user = User.find(current_user.id)
-		user.update(user_params)
-		redirect_to user_path(user.id)
-	end
+  def update
+    current_user.update(user_params)
+    redirect_to user_path(current_user)
+  end
 
-	private
-		def user_params
-			params.require(:user).permit(:name)
-		end
+  private
+    def user_params
+      params.require(:user).permit(:name)
+    end
 end
