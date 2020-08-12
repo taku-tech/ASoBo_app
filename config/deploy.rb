@@ -3,7 +3,7 @@ lock "~> 3.14.1"
 
 set :application, "ASoBo_app"
 set :repo_url, "git@github.com:taku-tech/ASoBo_app.git"
-set :deploy_to, "/home/ec2-user/ASoBO_app"
+set :deploy_to, "/home/ec2-user/ASoBo_app"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "public/system", "tmp"
