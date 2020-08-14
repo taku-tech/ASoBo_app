@@ -2,7 +2,7 @@ class CreateWords < ActiveRecord::Migration[5.2]
   def change
     create_table :words do |t|
 
-      t.references :genre, type: :integer, foreign_key: true
+      t.integer :genre, foreign_key: true
       t.string :english, null: false
       t.string :japanese, null: false
       t.string :image_id, null: false
