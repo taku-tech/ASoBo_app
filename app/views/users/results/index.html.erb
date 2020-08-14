@@ -13,17 +13,7 @@
           <% @results.each do |result| %>
           <tr>
             <td><%= link_to result.created_at.strftime("%Y/%m/%d %H:%M"), result_path(result.id) %></td>
-            <td>
-              <% score = 0 %>
-              <% question_cnt = 0 %>
-              <% result.result_details.each do |result_detail| %>
-              <% question_cnt = question_cnt + 1 %>
-              <% if result_detail.word.english == result_detail.selected_choice %>
-              <% score = score + 1 %>
-              <% end %>
-              <% end %>
-              <%= "#{score} / #{question_cnt}" %>
-            </td>
+            <td><%= result.score %></td>
           </tr>
           <% end %>
         </tbody>

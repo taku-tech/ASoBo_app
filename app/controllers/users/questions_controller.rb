@@ -25,6 +25,17 @@ class Users::QuestionsController < ApplicationController
     @question = current_user.questions.find_by(is_done: false)
     if @question.nil?
       current_user.questions.destroy_all
+      # 正解数の判定と保存
+      @result_details = @result.result_details.all
+      correct_answers_cnt = 0
+      @result_details.each do |result_detail|
+        if result_detail.word.english == result_detail.selected_choice
+          correct_answers_cnt = correct_answers_cnt + 1
+        end
+      end
+      @result.score = correct_answers_cnt
+      @result.save
+
       redirect_to result_path(params[:result][:id].to_i)
     else
       @question_word = Word.find(@question.word_id)
