@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <h2>成績表</h2>
-      <h4>合計点数：<%= "#{@questions_cnt}問中#{@correct_answers_cnt}点" %></h4>
+      <h4>合計点数：<%= "#{@questions_cnt}問中#{@result.score}点" %></h4>
       <table class="table table-bordered result-detail__table">
         <thead>
           <tr class="result-detail__table-head">
