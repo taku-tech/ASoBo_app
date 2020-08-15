@@ -8,7 +8,10 @@ class Users::QuestionsController < ApplicationController
     @question = current_user.questions.find(params[:id])
     @question_word = Word.find(@question.word_id)
     @choices = @question_word.choices.all.shuffle
-    @result = current_user.results.create
+    @result = current_user.results.new
+    @result.level = session[:level]
+    @result.save
+    session[:level].clear
     @result_word = ResultDetail.new
   end
 
@@ -51,7 +54,7 @@ class Users::QuestionsController < ApplicationController
       normal: 10,
       hard: 15
     } # 難易度ごとに問題の表示数を指定
-    params[:level]
+    session[:level] = params[:level]
     @words = Word.all.shuffle.take(question_count_per_level[params[:level].to_sym]) # ランダムで単語をピックアップ
     # 問題を作成
     @words.each do |word|
