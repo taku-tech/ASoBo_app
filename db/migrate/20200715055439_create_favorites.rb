@@ -3,7 +3,7 @@ class CreateFavorites < ActiveRecord::Migration[5.2]
     create_table :favorites do |t|
 
       t.integer :user_id, foreign_key: true
-      t.integer :word, foreign_key: true
+      t.integer :word_id, foreign_key: true
       t.timestamps
     end
   end
