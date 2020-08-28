@@ -16,15 +16,18 @@ class Users::QuestionsController < ApplicationController
   end
 
   def next
+    # 回答された問題
     question = current_user.questions.find(params[:id])
     question_word = Word.find(question.word_id)
+    question.is_done = true
+    question.save
+    # 直前の問題を結果テーブルに保存する
     @result = Result.find(params[:result][:id].to_i)
     result_word = @result.result_details.new(result_detail_params)
     result_word.word_id = question_word.id
     result_word.result_id = @result.id
-    question.is_done = true
-    question.save
     result_word.save
+
     @question = current_user.questions.find_by(is_done: false)
     if @question.nil?
       current_user.questions.destroy_all
