@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2020_08_05_072822) do
     t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["word_id"], name: "index_choices_on_word_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -37,8 +36,6 @@ ActiveRecord::Schema.define(version: 2020_08_05_072822) do
     t.integer "word_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_favorites_on_user_id"
-    t.index ["word_id"], name: "index_favorites_on_word_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -55,26 +52,22 @@ ActiveRecord::Schema.define(version: 2020_08_05_072822) do
     t.boolean "is_done", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_questions_on_user_id"
-    t.index ["word_id"], name: "index_questions_on_word_id"
   end
 
   create_table "result_details", force: :cascade do |t|
     t.integer "word_id"
-    t.integer "result_id"
+    t.integer "result"
     t.string "selected_choice", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["result_id"], name: "index_result_details_on_result_id"
-    t.index ["word_id"], name: "index_result_details_on_word_id"
   end
 
   create_table "results", force: :cascade do |t|
     t.integer "user_id"
     t.integer "score"
+    t.string "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_results_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,7 +93,6 @@ ActiveRecord::Schema.define(version: 2020_08_05_072822) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["english"], name: "index_words_on_english"
-    t.index ["genre_id"], name: "index_words_on_genre_id"
     t.index ["japanese"], name: "index_words_on_japanese"
   end
 

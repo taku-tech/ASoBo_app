@@ -2,7 +2,14 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <h2>成績表</h2>
-      <h4>合計点数：<%= "#{@questions_cnt}問中#{@correct_answers_cnt}点" %></h4>
+      <% if @result.level == "easy" %>
+      <h4>難易度：かんたん</h4>
+      <% elsif @result.level == "normal" %>
+      <h4>難易度：ふつう</h4>
+      <% elsif @result.level == "hard" %>
+      <h4>難易度：むずかしい</h4>
+      <% end %>
+      <h4>合計点数：<%= @result.score %>点</h4>
       <table class="table table-bordered result-detail__table">
         <thead>
           <tr class="result-detail__table-head">

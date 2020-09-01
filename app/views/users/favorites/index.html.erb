@@ -9,7 +9,9 @@
             <%= attachment_image_tag favorite.word, :image, format: 'jpeg', size: "100x100" %>
           </div>
           <p><%= favorite.word.japanese %></p>
-          <p><%= favorite.word.english %></p>
+          <div class="word__english">
+            <p><%= favorite.word.english %></p>
+          </div>
         </div>
         <% end %>
       </div>

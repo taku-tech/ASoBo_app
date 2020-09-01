@@ -8,23 +8,40 @@ class Users::QuestionsController < ApplicationController
     @question = current_user.questions.find(params[:id])
     @question_word = Word.find(@question.word_id)
     @choices = @question_word.choices.all.shuffle
-    @result = current_user.results.create
+    @result = current_user.results.new
+    @result.level = session[:level]
+    @result.save
+    session[:level].clear
     @result_word = ResultDetail.new
   end
 
   def next
+    # 回答された問題
     question = current_user.questions.find(params[:id])
     question_word = Word.find(question.word_id)
+    question.is_done = true
+    question.save
+    # 直前の問題を結果テーブルに保存する
     @result = Result.find(params[:result][:id].to_i)
     result_word = @result.result_details.new(result_detail_params)
     result_word.word_id = question_word.id
     result_word.result_id = @result.id
-    question.is_done = true
-    question.save
     result_word.save
+
     @question = current_user.questions.find_by(is_done: false)
     if @question.nil?
       current_user.questions.destroy_all
+      # 正解数の判定と保存
+      @result_details = @result.result_details.all
+      correct_answers_cnt = 0
+      @result_details.each do |result_detail|
+        if result_detail.word.english == result_detail.selected_choice
+          correct_answers_cnt = correct_answers_cnt + 1
+        end
+      end
+      @result.score = correct_answers_cnt
+      @result.save
+
       redirect_to result_path(params[:result][:id].to_i)
     else
       @question_word = Word.find(@question.word_id)
@@ -40,7 +57,7 @@ class Users::QuestionsController < ApplicationController
       normal: 10,
       hard: 15
     } # 難易度ごとに問題の表示数を指定
-    params[:level]
+    session[:level] = params[:level]
     @words = Word.all.shuffle.take(question_count_per_level[params[:level].to_sym]) # ランダムで単語をピックアップ
     # 問題を作成
     @words.each do |word|
