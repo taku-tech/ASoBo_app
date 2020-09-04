@@ -20,6 +20,7 @@
             <li class="nav__list"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-danger" %></li>
             <% else %>
             <li class="nav__list"><%= link_to 'サイトについて', about_path, class:"btn btn-info" %></li>
+            <li class="nav__list"><%= link_to '管理者ログイン', new_admin_session_path, class:"btn btn-info" %></li>
             <% end %>
           </ul>
         </nav>
