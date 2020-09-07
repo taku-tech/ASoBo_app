@@ -1,9 +1,12 @@
 <%= form_with model: [:admins, genre], local: true do |f| %>
-    <%= f.label :name, "ジャンル名の入力" %>
-    <%= f.text_field :name %>
-    <%= f.radio_button :is_valid, "true" %>
-    <%= f.label :is_valid, "有効" %>
-    <%= f.radio_button :is_valid, "false" %>
-    <%= f.label :is_valid, "無効" %>
+
+  <%= render 'layouts/error_messages', obj: genre %>
+
+  <%= f.label :name, "ジャンル名の入力" %>
+  <%= f.text_field :name %>
+  <%= f.radio_button :is_valid, "true" %>
+  <%= f.label :is_valid, "有効" %>
+  <%= f.radio_button :is_valid, "false" %>
+  <%= f.label :is_valid, "無効" %>
   <%= f.submit submit, class:"btn btn-default" %>
 <% end %>
