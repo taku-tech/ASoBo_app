@@ -1,4 +1,7 @@
 <%= form_with model: [:admins, word], local: true do |f| %>
+
+  <%= render 'layouts/error_messages', obj: word %>
+
   <div class="form-group">
     <%= f.attachment_field :image %>
   </div>

@@ -11,6 +11,9 @@ class Word < ApplicationRecord
 
 	accepts_nested_attributes_for :choices
 
+	validates :english, presence: true, length: {maximum: 50}
+	validates :japanese, presence: true, length: {maximum: 50}
+
 	def favorite_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end
